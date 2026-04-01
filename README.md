@@ -1,4 +1,3 @@
-# Web-Development-Workflow
 # Chaitra K Portfolio Website
 
 A responsive full-stack personal portfolio website built to present professional information, showcase skills and projects, and collect contact form submissions through a MongoDB-backed backend.
