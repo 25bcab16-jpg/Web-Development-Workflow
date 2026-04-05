@@ -1,0 +1,2 @@
+Connected to MongoDB at mongodb://127.0.0.1:27017/portfolio_db
+Portfolio server running at http://localhost:3000

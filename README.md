@@ -99,19 +99,21 @@ cd "My Portfolio"
 npm install
 ```
 
-3. Make sure MongoDB is running locally at:
+3. Create a local environment file from `.env.example` and set your values.
+
+4. Make sure MongoDB is running locally at:
 
 ```text
 mongodb://127.0.0.1:27017
 ```
 
-4. Start the server:
+5. Start the server:
 
 ```bash
 npm start
 ```
 
-5. Open the project in your browser:
+6. Open the project in your browser:
 
 ```text
 http://localhost:3000
@@ -127,6 +129,43 @@ http://localhost:3000
 
 - `npm run check`  
   Performs a syntax check on the JavaScript files
+
+## Environment Variables
+
+- `PORT`  
+  Local server port. Render sets this automatically in production.
+
+- `MONGODB_URI`  
+  MongoDB connection string. Required on Render.
+
+- `MONGODB_DB`  
+  MongoDB database name. Defaults to `portfolio_db`.
+
+## Deploying to Render
+
+1. Push this project to GitHub.
+2. Create a new Web Service in Render and connect the repository.
+3. Render can read the included `render.yaml`, or you can configure these values manually:
+
+```text
+Build Command: npm install
+Start Command: npm start
+```
+
+4. In Render environment variables, set:
+
+```text
+NODE_ENV=production
+MONGODB_URI=<your-mongodb-atlas-connection-string>
+MONGODB_DB=portfolio_db
+```
+
+5. Use `/health` as the health check path.
+
+Notes:
+- Render does not provide a local MongoDB instance for this app, so use MongoDB Atlas or another hosted MongoDB service.
+- The app already listens on `process.env.PORT`, which is required for Render.
+- If `MONGODB_URI` is missing or invalid, the portfolio still deploys and loads, but the contact form returns a temporary unavailability message until the database is configured.
 
 ## Contact Form Flow
 
